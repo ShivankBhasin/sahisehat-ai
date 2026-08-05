@@ -12,11 +12,7 @@ import whisper
 
 MODEL_NAME = "tiny"
 
-print(f"Loading Whisper model: {MODEL_NAME}")
-
-model = whisper.load_model(MODEL_NAME)
-
-print("Whisper loaded successfully.")
+model = None
 
 
 SUPPORTED_EXTENSIONS = {
@@ -66,6 +62,13 @@ async def transcribe_audio(
             f.write(audio_bytes)
 
             temp_file = f.name
+
+            global model
+
+            if model is None:
+                print(f"Loading Whisper model: {MODEL_NAME}")
+                model = whisper.load_model(MODEL_NAME)
+                print("Whisper loaded successfully.")
 
         result = model.transcribe(
             temp_file,
