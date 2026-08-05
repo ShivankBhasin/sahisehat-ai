@@ -9,17 +9,8 @@ import whisper
 # SAHISEHAT SPEECH TO TEXT SERVICE
 # ============================================================
 
-# Load Whisper once when the server starts.
-#
-# tiny   -> fastest
-# base   -> recommended
-# small  -> better accuracy
-# medium -> slower
-#
-# We'll start with "base".
-#
 
-MODEL_NAME = "base"
+MODEL_NAME = "tiny"
 
 print(f"Loading Whisper model: {MODEL_NAME}")
 
